@@ -1,1 +1,3 @@
-
+| **NAME**              | **PROMPT**                     | **DESCRIPTION**                    | **EXAMPLE**                       |
+|-----------------------|--------------------------------|------------------------------------|-----------------------------------|
+| app.yaml | create pod with nginx container |  Specification of the pod with nginx container which has port | [app.yaml](./yaml/app.yaml) |
