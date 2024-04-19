@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ml-training
+spec:
+  completions: 1
+  template:
+    spec:
+      containers:
+      - name: ml-training
+        image: ml-training-image
+        imagePullPolicy: Always
+        args: ["train.py", "--input-path=/mnt/input-data", "--output-path=/mnt/output-data"]
+        volumeMounts:
+          - name: input-volume
+            mountPath: /mnt/input-data
+          - name: output-volume
+            mountPath: /mnt/output-data
+      restartPolicy: Never
+      volumes:
+        - name: input-volume
+          persistentVolumeClaim:
+            claimName: input-claim
+        - name: output-volume
+          persistentVolumeClaim:
+            claimName: output-claim
